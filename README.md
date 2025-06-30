@@ -140,6 +140,23 @@ The script uses `ThreadPoolExecutor` to encode and process images in parallel. I
 - `argparse`
 - `json`, `csv`, `os`, `base64`, `time`
 
+---
+## ⚙️ Design Choices & Tradeoffs
+
+1. **Use of VLM (`qwen2p5-vl-32b-instruct`)**  
+   This model provides OCR, reasoning and structured output capabilities for ID documents with a decent performance.\
+   **Tradeoff:** Inference time is slightly higher compared to smaller models, but accuracy is critical for KYC compliance and fraud detection.
+
+2. **Parallel Processing with `ThreadPoolExecutor`**  
+   Significantly speeds up inference by processing multiple images concurrently, maximizing API throughput.  
+   **Tradeoff:** Requires `max_workers` challenged by the local resource bottlenecks.
+
+3. **Face Cropping & storing**  
+   Enables identity verification use cases (e.g., face matching). This can be extended to `Live Camera feed` to deploy this module real-time Face/ID detection. 
+   **Tradeoff:** Slightly increases processing time and adds dependency on image format correctness for cropping.
+
+---
+
 ### 🔗 Fireworks AI URLs
 
 - [Fireworks API & SDK installation](https://fireworks.ai/docs/tools-sdks/python-client/the-tutorial)
