@@ -21,7 +21,7 @@ This project built an end-to-end PoV solution to processes images of ID document
 
 ## Output
 
-- A structured file (JSON, TXT, or CSV) containing the extracted information.
+- A structured file (JSON, txt, or CSV) containing the extracted information.
 - Optional: a folder with cropped face images from the IDs.
 
 ---
@@ -64,16 +64,16 @@ This project built an end-to-end PoV solution to processes images of ID document
 
 - Create an `input` folder storing the input ID documents
 
-- Run the following command to execute the code:
+- Run the following command to execute the code and store the results in `out.json` file:
 
 ```bash
 python id_parser.py \
-  --input_dir input_images/ \
-  --output_path identity_outputs.json \
+  --input_dir input/ \
+  --output_path out.json \
   --output_format json \
   --max_workers 6 \
   --model qwen2p5-vl-32b-instruct \
-  --face_dir face_crops/
+  --face_dir face/
 ```
 
 ---
